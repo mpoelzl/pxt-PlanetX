@@ -315,13 +315,13 @@ namespace PlanetX_IOT {
         control.onEvent(EspEventSource, EspEventValue.ConnectSmartIot, () => {})
         currentCmd = Cmd.ConnectWifi
         sendAT(`AT+CWJAP="${ssid}","${pw}"`) // connect to Wifi router
-        let timeout = input.runningTime() + 1000
+        let timeout = input.runningTime() + 5000
         let count = 0;
         while(!wifi_connected && count < 10){
             if (input.runningTime() > timeout){
                 currentCmd = Cmd.ConnectWifi
                 sendAT(`AT+CWJAP="${ssid}","${pw}"`) // connect to Wifi router
-                timeout = input.runningTime() + 1000
+                timeout = input.runningTime() + 5000
                 count++
             }
         }
